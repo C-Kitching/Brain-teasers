@@ -21,20 +21,29 @@ def quadratic_solver(a, b, c):
     return x_1, x_2
 
 def sum_consecutive_series(N):
-  """
-  Function to sum an consecutive series from 1 to N
+  """Function to sum a consecutive series from 1 to N
+
+  Args:
+      N (int): upper limit of the series
+
+  Returns:
+      int: sum of the series
   """
   return N*(N+1)/2
 
 def sum_sq_consecutive_series(N):
-  """
-  Function to sum square of consecutive series from 1 to N
+  """Function to sum squares of a consecutive series from 1 to N
+
+  Args:
+      N (int): upper limit of the series
+
+  Returns:
+      int: sum of the series
   """
   return N**3/3 + N**2/2 + N/6
 
 def main():
-  """
-  Main function to run program
+  """Main function
   """
 
   # paramters
@@ -58,18 +67,17 @@ def main():
   sum_n_sq = sum_sq_consecutive_series(N)
 
   # calculate x and y
-  x_1, x_2 = quadratic_solver(1, sum_Z - sum_n, sum_Z**2 - sum_Z*sum_n)
+  x_1, x_2 = quadratic_solver(2, 2*(sum_Z - sum_n), (sum_Z - sum_n)**2 + sum_Z_sq - sum_n_sq)
   if x_1 > 0:
-    x = x_1
+    x = int(x_1)
   else:
-    x = x_2
-  y = np.sqrt(sum_Z_sq - sum_n_sq - x**2)
+    x = int(x_2)
+  y = int(np.sqrt(sum_n_sq - sum_Z_sq - x**2))
 
-  print(x, y)
-  print(numbers_to_delete)
+  # print results
+  print("Numbers deleted = {}".format(sorted(numbers_to_delete)))
+  print("Solution = {}".format(sorted([x, y])))
   
-
-
 # main code
 if __name__ == "__main__":
   main()
