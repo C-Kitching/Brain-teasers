@@ -9,5 +9,5 @@ One hundred prisoners are lined up single file. A blue or red hat is placed on e
 A guard is going to walk down the line, starting in the back, and ask each prisoner what color hat they have on. They can only answer "blue" or "red." If they answer incorrectly, or say anything else, they will be shot dead on the spot. If they answer correctly, they will be set free. Each prisoner can hear all of the other prisoners' responses, as well as any gunshots that indicate an incorrect response. They can remember all of this information.  
 Before the executions begin, the prisoners get to huddle up and make a plan. How can the prisoners ensure that the most people possible survive?  
 
-2. **Missing integers** - *Incomplete*  
+2. **Missing integers**   
 Suppose we have 98 distinct integers from I to I 00. What is a good way to find out the two missing integers (within [ l, 100])?
