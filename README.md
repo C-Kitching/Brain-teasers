@@ -19,6 +19,10 @@ $$x_{0}, x_{1} = f(x_{0}), x_{2}=f(x_{1}),...,x_{i}=f(x_{i-1}), ...$$
 must eventually use the same value twice: there must be some pair of distinct indicies $i$ and $j$ such that $x_{i} = x_{j}$. Once this happens, the sequence must continue periodically, by repeating the same sequence of values from $x_{i}$ to $x_{j-1}$. Cycle deterction is the problem of finding $i$ and $j$ given $f$ and $x_{0}$.   
 To do this, we can use Floyd's tortoise and hare algorithm [1].  
 
+4. **Blackjack**  
+Given two blackjack hands can we determine which one would win?  
+For example (K,Q) would beat (2,3).  
+The complication with this problem involves determining the optimal representation for the A's, as these can be high or low.  
 
 
 
