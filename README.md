@@ -24,6 +24,11 @@ Given two blackjack hands can we determine which one would win?
 For example (K,Q) would beat (2,3).  
 The complication with this problem involves determining the optimal representation for the A's, as these can be high or low.  
 
+5. **Sum of odd length subarrays**  
+Given an array, determine the sum of all odd length subarrays.  
+For example: [2,4,7]  
+The possible subarrays are: [2], [4], [7], [2,4], [4,7], [2,4,7]  
+The total sum of those subarrays is = 2 + 4 + 7 + 6 + 11 + 13 = 43   
 
 
 ## Referecnes
