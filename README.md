@@ -24,6 +24,17 @@ Given two blackjack hands can we determine which one would win?
 For example (K,Q) would beat (2,3).  
 The complication with this problem involves determining the optimal representation for the A's, as these can be high or low.  
 
+5. **Sum of odd length subarrays**  
+Given an array, determine the sum of all odd length subarrays.  
+For example: [2,4,7]  
+The possible subarrays are: [2], [4], [7], [2,4], [4,7], [2,4,7]  
+The total sum of those subarrays is = 2 + 4 + 7 + 6 + 11 + 13 = 43  
+This problem can be solved by brute-force in $O(n^{3})$ time, however there exists an order $O(n)$ solution.  
+Consider how many times the element $A[k]$ appears in the sum.  
+There are exactly $(i+1)$ subarrays ending in $A[k]$, and exactly $(n-i)$ subarrays starting with $A[k]$, therefore the total amound of subarrays of any length containing $A[k]$ is $k = (i+1)(n-i)$ where $n$ is the length of the original array.  
+Of those subarrays, $(k+1)/2$ are of odd length.  
+Therefore we simply need to loop through the array one time and iterate the sum 
+$$S_{i} = A[k] * \frac{(i+1)(n-i)+1}{2}$$.
 
 
 ## Referecnes
