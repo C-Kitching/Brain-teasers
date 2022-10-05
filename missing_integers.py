@@ -1,3 +1,10 @@
+# Title: Sum of all odd length sub arrays
+# Name: Christopher Robert Kitching
+# E-mail: christopher.kitching@manchester.ac.uk
+# Date created: 24/09/22
+# Last editied: 04/10/22
+# Description: Given an array, detemine the sum of all odd length sub arrays
+
 # imports
 import numpy as np
 import matplotlib.pyplot as plt
@@ -10,10 +17,10 @@ def quadratic_solver(a, b, c):
     Args:
         a (float): x**2 coefficient
         b (float): x coefficient
-        c (float): _description_
+        c (float): constant
 
     Returns:
-        _type_: _description_
+        float: solution to differential equation
     """
     x_1 = (-b + np.sqrt(b**2-4*a*c))/(2*a)
     x_2 = (-b - np.sqrt(b**2-4*a*c))/(2*a)
@@ -67,7 +74,8 @@ def main():
   sum_n_sq = sum_sq_consecutive_series(N)
 
   # calculate x and y
-  x_1, x_2 = quadratic_solver(2, 2*(sum_Z - sum_n), (sum_Z - sum_n)**2 + sum_Z_sq - sum_n_sq)
+  x_1, x_2 = quadratic_solver(2, 2*(sum_Z - sum_n), (sum_Z - sum_n)**2 
+                              + sum_Z_sq - sum_n_sq)
   if x_1 > 0:
     x = int(x_1)
   else:
