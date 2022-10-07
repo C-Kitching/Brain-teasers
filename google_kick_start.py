@@ -1,26 +1,39 @@
-# TODO: Complete the get_ruler function
-def get_ruler(kingdom):
-    ruler = ''
-    ending_letter = kingdom[-1]
-    vowels = {'A', 'E', 'I', 'O', 'U', 'a', 'e', 'i', 'o', 'u'}
-    if ('y' or 'Y') in set(kingdom):
-        ruler = 'Nobody'
-    elif ending_letter in vowels:
-        ruler = 'Alice'
-    else:
-        ruler = 'Bob'
-    # TODO: Add logic to determine the ruler of the kingdom
-    # It should be either 'Alice', 'Bob' or 'nobody'.
-    return ruler
+# Title: Google Kick Start
+# Name: Christopher Robert Kitching
+# E-mail: christopher.kitching@manchester.ac.uk
+# Date created: 05/10/22
+# Last editied: 06/10/22
+# Description: File to test google kick start code
 
-def main():
-  # Get the number of test cases
-  T = int(input())
-  for t in range(T):
-    # Get the kingdom
-    kingdom = input()
-    get_ruler(kingdom)
-    print('Case #%d: %s is ruled by %s.' % (t + 1, kingdom, get_ruler(kingdom)))
+import heapq
+
+def h_index(n, citations):
+    # TODO: Complete the function to get the H-Index scores after each paper
+    citations = list(citations)
+    minH = []
+    ans = []
+    H = 0
+
+    for i in range(n):
+
+        if citations[i] > H:
+            heapq.heappush(minH, citations[i])
+        while minH and minH[0] <= H:
+            heapq.heappop(minH)
+        if len(minH) >= H + 1:
+            H += 1
+        ans.append(H)
+
+    return ans
+
 
 if __name__ == '__main__':
-  main()
+  t = int(input())
+
+  for test_case in range(1, t + 1):
+    n = int(input())                      # The number of papers
+    citations = map(int, input().split()) # The number of citations for each paper
+    h_index_scores = h_index(n, citations)
+    print("Case #" + str(test_case) + ": " + ' '.join(map(str, h_index_scores)))
+
+
