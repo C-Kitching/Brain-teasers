@@ -54,7 +54,8 @@ def get_cost(ms1, ms2):
     Returns:
         cost (int): cost difference between the two inputs
     """
-    cost = sum([abs(ms1[i][j]-ms2[i][j]) for i in range(len(ms1)) for j in range(len(ms1[0]))])
+    cost = sum([abs(ms1[i][j]-ms2[i][j]) for i in range(len(ms1)) for j in 
+           range(len(ms1[0]))])
     return cost
 
 def generate_all_magic_squares():
