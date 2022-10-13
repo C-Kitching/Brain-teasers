@@ -8,6 +8,15 @@
 import heapq
 
 def h_index(n, citations):
+    """_summary_
+
+    Args:
+        n (_type_): _description_
+        citations (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     # TODO: Complete the function to get the H-Index scores after each paper
     citations = list(citations)
     minH = []
