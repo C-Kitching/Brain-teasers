@@ -1,3 +1,10 @@
+// Title: Google Kick Start
+// Name: Christopher Robert Kitching
+// E-mail: christopher.kitching@manchester.ac.uk
+// Date created: 17/10/22
+// Last editied: 17/10/22
+// Description: File to test Leetcode solutions
+
 #include <vector>
 #include <iostream>
 
