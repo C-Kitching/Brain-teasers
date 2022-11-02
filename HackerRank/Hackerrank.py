@@ -6,31 +6,21 @@
 # Description: File to test Hackerrank solutions
 
 
-<<<<<<< HEAD
 # Enter your code here. Read input from STDIN. Print output to STDOUT
 
-=======
->>>>>>> 775ee91f3d1c33ba5e2b84ee1dbb739eec0b42f7
 def main():
     """Main function
     """
 
     S = ""
-<<<<<<< HEAD
     S_changes = []
-=======
-    S_changes = [S]
->>>>>>> 775ee91f3d1c33ba5e2b84ee1dbb739eec0b42f7
     
     # read input
     Q = int(input())
     for _ in range(Q):
         operation = input()
-<<<<<<< HEAD
 
         prior_S = S
-=======
->>>>>>> 775ee91f3d1c33ba5e2b84ee1dbb739eec0b42f7
         
         # handle cases
         if operation[0] == "1":
@@ -50,13 +40,8 @@ def main():
         print(S)
                     
         # store change
-<<<<<<< HEAD
         if operation[0] != "4" and S != prior_S:
             S_changes.append(prior_S)
-=======
-        if operation[0] != "4" and S != S_changes[-1]:
-            S_changes.append(S)
->>>>>>> 775ee91f3d1c33ba5e2b84ee1dbb739eec0b42f7
             
     return S
             
