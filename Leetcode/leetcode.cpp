@@ -7,35 +7,45 @@
 
 #include <vector>
 #include <iostream>
+#include <string>
+#include <unordered_set>
 
-bool self_dividing(const int& num)
-{
-    int copy = num;
-    while(copy > 0){
-        int digit = copy%10;
-        if(digit == 0) return false;
-        if(num%digit != 0) return false;
-        copy /= 10;
-    }
-    return true;
-}
+using namespace std;
 
-std::vector<int> selfDividingNumbers(const int& left,const int& right) {
-    std::vector<int> nums;
-    for(int i{left}; i < right + 1; i++){
-        if(self_dividing(i)){
-            std::cout << i << std::endl;
-            nums.push_back(i);
+int lengthOfLongestSubstring(const string& s) {
+        
+    int max_length{0};
+    
+    // check all chars
+    for(int i{0}; i < s.size(); i++){
+        
+        unordered_set<char> prev;
+        int length{0};
+        
+        for(int j{i}; j < s.size(); j++){
+            
+            // if char not seen before
+            if(prev.find(s[j]) == prev.end()){
+                prev.insert(s[j]);
+                length++;
+            }
+            
+            // if seen before, move to the next char
+            else break;
         }
+        
+        // if current length is max
+        if(length > max_length) max_length = length;
+        
     }
-    return nums;
+    
+    return max_length;
+
 }
 
 int main()
 {
-    int left = 1; 
-    int right = 22;
-    std::vector<int> nums = selfDividingNumbers(left, right);
+    std::cout << lengthOfLongestSubstring("abcabcbb");
 
 
     return 0;
