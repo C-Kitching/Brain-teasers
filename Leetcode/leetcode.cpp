@@ -12,40 +12,41 @@
 
 using namespace std;
 
-int lengthOfLongestSubstring(const string& s) {
-        
-    int max_length{0};
-    
-    // check all chars
-    for(int i{0}; i < s.size(); i++){
-        
-        unordered_set<char> prev;
-        int length{0};
-        
-        for(int j{i}; j < s.size(); j++){
-            
-            // if char not seen before
-            if(prev.find(s[j]) == prev.end()){
-                prev.insert(s[j]);
-                length++;
-            }
-            
-            // if seen before, move to the next char
-            else break;
-        }
-        
-        // if current length is max
-        if(length > max_length) max_length = length;
-        
-    }
-    
-    return max_length;
+struct ListNode {
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
+ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        
+    // parse both lists
+    int val1 = l1->val;
+    while(l1 != NULL){
+        l1 = l1->next;
+        val1 *= 10;
+        val1 += l1->val;
+    }
+    cout << val1;
+
+    
+    return l2;
+    
+    
+    
+    
 }
+    
+
 
 int main()
 {
-    std::cout << lengthOfLongestSubstring("abcabcbb");
+    ListNode* l1;
+    ListNode* l2;
+
+    addTwoNumbers(l1, l2);
 
 
     return 0;
