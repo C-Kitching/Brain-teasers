@@ -8,34 +8,41 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include <unordered_set>
 
 using namespace std;
 
-struct ListNode {
-    int val;
-    ListNode *next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+int coinChange(vector<int>& coins, int n) {
         
-    // parse both lists
-    int val1 = l1->val;
-    while(l1 != NULL){
-        l1 = l1->next;
-        val1 *= 10;
-        val1 += l1->val;
-    }
-    cout << val1;
+    // initalise variables
+    int* dp = new int[n+1];
+    
+    dp[0] = 0; // 0 coins needed to make 0 total
+    
+    // sort array
+    sort(coins.begin(), coins.end());
+    
+    // determine how to make each possible value
+    // using the minimum number of coins
+    for(int i{1}; i<=n; i++){
+        
+        dp[i] = INT_MAX;
+        
+        for(auto c : coins){
+            
+            // if the value of the coin is greater than the value we are trying to make
+            // then move to making next value in the list
+            if(i - c < 0) break;
+            
+            // best way to make current amount
+            // is the min 
+            if(dp[i-c] != INT_MAX) dp[i] = min(dp[i], 1 + dp[i-c]);
 
+        }
+    }
     
-    return l2;
-    
-    
-    
+    return dp[n] == INT_MAX ? -1 : dp[n];
     
 }
     
@@ -43,11 +50,14 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 
 int main()
 {
-    ListNode* l1;
-    ListNode* l2;
+    vector<int> coins;
+    coins.push_back(1);
+    coins.push_back(2);
+    coins.push_back(5);
+    int n{11};
 
-    addTwoNumbers(l1, l2);
-
+    int change = coinChange(coins, n);
+    cout << change;
 
     return 0;
 }
