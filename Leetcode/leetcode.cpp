@@ -100,33 +100,31 @@ TreeNode* createTree(const vector<vector<int>>& edges, int& bob,
 }
 
 // search tree
-int Inorder(TreeNode* node, int cost, int& step_count)
+void Inorder(TreeNode* node, int cost, int& step_count, int& max_cost)
 {
     // taken step
     step_count++;
-
-    // if root node return
-    if (node == NULL) return cost;
 
     // add cost of node
     int node_level = node->val;
     if(node->bob_visit == step_count) cost += (node->cost)/2;  // bob and alice together
     else if(step_count < node->bob_visit || node->bob_visit == -1) cost += node->cost; // alice visits before bob
 
-    int cost_1{cost};
-    int cost_2{cost};
-
-    // search left and right nodes
+    // search left node
     if(node->left){
-        cost_1 = Inorder(node->left, cost, step_count);
-        step_count--;
-    } 
-    if(node->right){
-        cost_2 = Inorder(node->right, cost, step_count);
+        Inorder(node->left, cost, step_count, max_cost);
         step_count--;
     }
-
-    return max(cost_1, cost_2);
+    // search right node
+    if(node->right){
+        Inorder(node->right, cost, step_count, max_cost);
+        step_count--;
+    }
+    // root reached
+    if(node->left == nullptr && node->right == nullptr){
+        max_cost = max(cost, max_cost);
+        return;
+    }
 }
 
 
@@ -137,17 +135,22 @@ int mostProfitablePath(vector<vector<int>>& edges, int bob, vector<int>& amount)
 
     // perform dfs
     int cost{0};
+    int max_cost{-INT_MAX};
     int step_count{-1};
-    cost = Inorder(head, cost, step_count);
+    Inorder(head, cost, step_count, max_cost);
 
-    return cost;
+    return max_cost;
 }
 
 int main()
 {
-    vector<vector<int>> edges = {{0,1},{1,2},{2,3}};
+    //vector<vector<int>> edges = {{0,1},{1,2},{2,3}};
+    //int bob = 3;
+    //vector<int> amount = {-5644,-6018,1188,-8502};
+
+    vector<vector<int>> edges = {{0,1},{1,2},{1,3},{3,4}};
     int bob = 3;
-    vector<int> amount = {-5644,-6018,1188,-8502};
+    vector<int> amount = {-2,4,2,-4,6};
 
     int cost;
     cost = mostProfitablePath(edges, bob, amount);
