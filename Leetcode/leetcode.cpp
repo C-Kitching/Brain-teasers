@@ -15,32 +15,33 @@
 
 using namespace std;
 
-int countDistinctIntegers(vector<int>& nums) {
+int maxProfit(vector<int>& prices) {
         
-    vector<int> temp;
-    for(int j{0}; j < nums.size(); j++){
-        string s = to_string(nums[j]);
-        reverse(s.begin(), s.end());
-        temp.push_back(stoi(s));
-    }        
+    int N = prices.size();
+    int profit{0};
+    int buy_price;
 
-    vector<int> new_nums;
-    new_nums.reserve(nums.size() + temp.size()); // preallocate memory
-    new_nums.insert(new_nums.end(), nums.begin(), nums.end() );
-    new_nums.insert(new_nums.end(), temp.begin(), temp.end() );
-    
-    // convert to set and then back to vector
-    set<int> set;
-    for(int i{0}; i < new_nums.size(); i++) set.insert(new_nums[i]);
-    new_nums.assign(set.begin(), set.end());
-    
-    return new_nums.size();
+    for(int i{0}; i < N - 1; i++){
+
+        // find valley and buy
+        while(prices[i+1] <= prices[i] && i < N-1) i++;
+        buy_price = prices[i];
+
+        // find peak and sell
+        while(prices[i+1] > prices[i] && i < N-1) i++;
+        profit += prices[i] - buy_price;
+
+    }
+
+    return profit;
+
+
 }
 
 int main()
 {
-    vector<int> v{1,13,10,12,31};
-    int x = countDistinctIntegers(v);
+    vector<int> v{1,2};
+    int x = maxProfit(v);
     cout << x;
 
 
