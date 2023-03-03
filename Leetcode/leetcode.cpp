@@ -16,24 +16,27 @@ using namespace std;
 #define BLUE 2
 #define ll long long
 
-vector<vector<int>> generate(int numRows) {
-    vector<vector<int>> ret;
-    for(int i{0}; i < numRows; i++){
-        vector<int> row(i + 1, 1);
-        for(int j{0}; j < row.size(); j++){
-            if(j != 0 && j != row.size() - 1){
-                row[j] = ret[i-1][j] + ret[i-1][j+1];
-            }
+int strStr(string haystack, string needle) {
+    int i{0}, j{0};
+    while(i < haystack.size()){
+        int res{i};
+        while(haystack[i] == needle[j] && j < needle.size() && i < haystack.size()){
+            i++; j++;
         }
-        ret.push_back(row);
+        if(j == needle.size()) return res;
+        else{
+            i = res + 1;
+            j = 0;
+        }
     }
-    return ret; 
+    return -1;
 }
 
 int main()
 {
-    int r = 5;
-    vector<vector<int>> x = generate(r);
+    string haystack = "leetcode";
+    string needle = "leeto";
+    cout << strStr(haystack, needle); 
 
     return 0;
 }
