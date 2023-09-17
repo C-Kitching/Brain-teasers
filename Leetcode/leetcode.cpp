@@ -11,32 +11,37 @@
 using namespace std;
 
 #define mp make_pair
-#define WHITE 0
-#define RED 1
-#define BLUE 2
-#define ll long long
 
-int strStr(string haystack, string needle) {
-    int i{0}, j{0};
-    while(i < haystack.size()){
-        int res{i};
-        while(haystack[i] == needle[j] && j < needle.size() && i < haystack.size()){
-            i++; j++;
-        }
-        if(j == needle.size()) return res;
-        else{
-            i = res + 1;
-            j = 0;
+bool wordBreak(string s, unordered_set<string> &dict) {
+    if(dict.size()==0) return false;
+    
+    vector<bool> dp(s.size()+1,false);
+    dp[0]=true;
+    
+    for(int i=1;i<=s.size();i++)
+    {
+        for(int j=i-1;j>=0;j--)
+        {
+            if(dp[j])
+            {
+                string word = s.substr(j,i-j);
+                if(dict.find(word)!= dict.end())
+                {
+                    dp[i]=true;
+                    break; //next i
+                }
+            }
         }
     }
-    return -1;
+    
+    return dp[s.size()];
 }
 
 int main()
 {
     string haystack = "leetcode";
-    string needle = "leeto";
-    cout << strStr(haystack, needle); 
+    unordered_set<string> set = {"leet", "code"};
+    cout << wordBreak(haystack, set); 
 
     return 0;
 }
