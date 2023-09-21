@@ -55,16 +55,7 @@ def game_value(deck_size):
     
     # call helper function
     print(optimal_value(deck_size))
-    
-
-    
-    
-    
-        
-    
-    
-    
 
 if __name__ == '__main__':
-    deck_size = 8
+    deck_size = 52
     game_value(deck_size)
